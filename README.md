@@ -2,6 +2,8 @@
 
 Projeto criado para o teste técnico.
 
+### Para o projeto funcionando acesse: http://asmut.com.br/projetoconfitec
+
 ### 📋 Pré-requisitos
 
 ```
@@ -23,5 +25,5 @@ ou prompt de comando: dotnet run
 ## ⚙️ Executando os as migrations
 
 ```
-Para executar as migrations é necessário rodar alterar a string de conexao e rodar as Migrations
+Para executar as migrations é necessário alterar a string de conexao e rodar as Migrations
 ```

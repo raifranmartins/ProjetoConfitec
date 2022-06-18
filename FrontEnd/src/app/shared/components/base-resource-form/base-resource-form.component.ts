@@ -117,7 +117,7 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
 
 
 
-    console.log('formulario', resource)
+    //console.log('formulario', resource)
 
     this.resourceService.create1(resource)
       .subscribe(
