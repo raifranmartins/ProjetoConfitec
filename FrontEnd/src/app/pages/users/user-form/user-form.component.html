@@ -1,0 +1,119 @@
+<app-bread-crumb
+  [items]="[{text: 'Usuários', link: '/users'}, {text: pageTitle}]"
+></app-bread-crumb>
+
+<app-page-header
+  [page-title]="pageTitle"
+  button-text="<< Voltar"
+  button-link="/users"
+  button-class="btn-light"
+></app-page-header>
+
+
+<form [formGroup]="resourceForm" (submit)="submitForm(resourceForm.value)">
+
+  <div class="card">
+    <div class="card-header">
+      Informações sobre o Lançamento
+    </div>
+
+    <div class="card-body">
+
+        <div class="row g-3">           
+        <!-- name -->
+        <div class="col-md-6">
+          <label for="name">Nome</label>
+          <input type="text" class="form-control" id="name" formControlName="name" [ngClass]="{ 'is-invalid': submittingForm && f['name'].errors }" placeholder="Nome" maxlength="20">
+          <div *ngIf="submittingForm && f['name'].errors" class="invalid-feedback">
+              <div *ngIf="f['name'].errors['required']">&nbsp;*Informe o Nome do usuário</div>
+            <!--  <div *ngIf="f['name'].errors['cpfInvalido']">
+                  &nbsp;*Digite um CPF válido
+              </div> -->
+            </div>          
+        </div>
+
+        <div class="col-md-6">
+            <label for="name">Sobrenome</label>
+            <input type="text" class="form-control" id="surname" formControlName="surname" [ngClass]="{ 'is-invalid': submittingForm && f['surname'].errors }" placeholder="Sobrenome" maxlength="30">
+            <div *ngIf="submittingForm && f['surname'].errors" class="invalid-feedback">
+                <div *ngIf="f['surname'].errors['required']">&nbsp;*Informe o Sobrenome do usuário</div>
+              <!--  <div *ngIf="f['name'].errors['cpfInvalido']">
+                    &nbsp;*Digite um CPF válido
+                </div> -->
+              </div>     
+        </div>
+
+
+        <div class="col-md-6">
+            <label for="name">Email</label>
+            <input type="text" class="form-control" id="email" formControlName="email" [ngClass]="{ 'is-invalid': submittingForm && f['email'].errors }" placeholder="Email">
+            <div *ngIf="submittingForm && f['email'].errors" class="invalid-feedback">
+                <div *ngIf="f['email'].errors['required']">&nbsp;*Informe o Email do usuário</div>
+                <div *ngIf="f['email'].errors['email']">
+                    &nbsp;*Informe um Email válido
+                </div>
+              </div>         
+        </div>
+
+        <!-- date -->
+      <div class="col-md-3">
+          <label for="date">Data</label>
+          <input type="date" class="form-control" id="birthDate" formControlName="birthDate" [ngClass]="{ 'is-invalid': submittingForm && f['birthDate'].errors }" placeholder="Data">
+          <div *ngIf="submittingForm && f['birthDate'].errors" class="invalid-feedback">
+              <div *ngIf="f['birthDate'].errors['required']">&nbsp;*Informe a Data de nascimento</div>
+              <div *ngIf="f['birthDate'].errors['dataInvalida']">
+                  &nbsp;*Data inválida
+              </div>
+            </div>          
+        </div>
+   
+
+
+      
+        <!-- categoryId -->
+        <div class="col-md-3">
+          <label for="categoryId">Escolaridade</label>
+
+          <select name="scholarityId" id="scholarityId" formControlName="scholarityId" class="form-control" required
+          [ngClass]="{ 'is-invalid': submittingForm && f['scholarityId'].errors }">
+            <option *ngFor="let category of categories" [value]="category.id">{{ category.description }}</option>
+          </select>
+          <div *ngIf="submittingForm && f['scholarityId'].errors" class="invalid-feedback">
+            <div *ngIf="f['scholarityId'].errors['required']">&nbsp;*Informe a Escolaridade</div>
+            <p *ngIf="f['scholarityId'].errors['scholarityId']">*Informe a Escolaridade</p>            
+         </div>
+
+          
+        </div>
+
+        <div class="col-md-3" *ngIf="currentAction == 'new'">
+            <label for="date">Histórico Escolar</label>
+            <input formControlName="fileSource" type="file"
+            accept=".doc,.docx,.pdf"
+            class="form-control" (change)="onFileChange($event)" [ngClass]="{ 'is-invalid': submittingForm && f['fileSource'].errors }" placeholder="Data">
+            <div *ngIf="submittingForm && f['fileSource'].errors" class="invalid-feedback">
+                <div *ngIf="f['fileSource'].errors['required']">&nbsp;*Selecione o arquivo do histórico escolar</div>
+              </div>        
+          </div>
+
+        
+
+        <!-- description -->
+     
+    </div>
+
+  </div>
+
+  </div>
+
+
+
+ <!-- <button [disabled]="submittingForm || resourceForm.invalid" type="submit" class="btn btn-primary btn-lg float-right mt-3">
+    Salvar
+  </button>-->
+
+  <button type="submit" class="btn btn-primary btn-lg float-right mt-3">
+    Salvar
+  </button>
+
+</form>

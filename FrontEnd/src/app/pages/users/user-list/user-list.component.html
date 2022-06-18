@@ -1,0 +1,59 @@
+<app-bread-crumb
+  [items]="[{text: 'Usuários'}]"
+></app-bread-crumb>
+
+<app-page-header
+  page-title="Usuários"
+  button-text="+ Novo Usuario"
+  button-link="new"
+  button-class="btn-success"
+></app-page-header>
+
+
+<table class="table table-hover">
+    <thead>
+      <tr class="font-weight-bold bg-light">
+        <th>Nome</th> 
+        <th>Sobrenome</th>       
+        <th>Email</th>
+        <th class="text-center">Data de Nascimento</th>
+        <th>Escolaridade</th>        
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of resources">
+        <td>
+          <strong>{{user.name}}</strong><br>                    
+        </td>
+        <td>
+          {{user.surname}}
+        </td>
+        <td>
+         {{user.email}}
+        </td>
+        <td class="text-center">
+          {{user.birthDate | date : 'dd/MM/yyyy'}}
+         </td>
+         <td>
+          {{user.scholarytyDescription}}          
+         </td>         
+        <td class="text-end">          
+       <!--   <a [routerLink]="[user.id, 'edit']" class="btn btn-outline-info btn-sm mr-2">Editar</a>&nbsp;
+          <button (click)="deleteResource(user)" class="btn btn-outline-danger btn-sm">Excluir</button>&nbsp;
+          <button class="btn btn-outline-secondary btn-sm" (click)="downloadFile(user.schoolRecordsName!, user.schoolRecordsId!)"> <i class="fa fa-save"></i>Download</button>-->
+          <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+            <button [routerLink]="[user.id, 'edit']" type="button" class="btn btn-success">
+              <span class="fa fa-edit"></span>
+            </button>
+            <button (click)="deleteResource(user)" type="button" class="btn btn-danger">
+              <span class="fa fa-trash"></span>
+            </button>
+            <button  (click)="downloadFile(user.schoolRecordsName!, user.schoolRecordsId!)" type="button" class="btn btn-info">
+              <i class="fa fa-cloud-download" aria-hidden="true"></i>
+            </button>
+          </div>        
+        </td>
+      </tr>
+    </tbody>
+  </table>
