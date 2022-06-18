@@ -18,10 +18,10 @@ rodar pelo Visual Studio ou
 abrir o projeto ProConfitec.Api e executar o seguinte comando no terminal
 ou prompt de comando: dotnet run
 ```
-O sistema está usando banco de dados InMemory, não será preciso ter nenhum banco de dados instalado.
+
 
 ## ⚙️ Executando os as migrations
 
 ```
-Para executar as migrations é necessário rodar o seguinte comando no projeto de infra: Upadate-Database
+Para executar as migrations é necessário rodar alterar a string de conexao e rodar as Migrations
 ```
