@@ -1,4 +1,4 @@
-# Projur
+# ProjetoConfitec
 
 Projeto criado para o teste técnico.
 
